@@ -1,46 +1,54 @@
-# Pneumonia Detection frmo Chest X-Rays 🫁
+# 🫁 Pneumonia Detection from Chest X-Rays
 
-THis repository presents a deep learning pipeline for binary classification of chest X-Ray images into **Normal** and **Pneumonia** classes using a fine-tuned ResNet-50 model.
+This repository presents a deep learning pipeline for binary classification of chest X-ray images into **Normal** and **Pneumonia** classes using both a custom Convolutional Neural Network (TensorFlow/Keras) and a fine-tuned **ResNet-50** transfer learning model (PyTorch).
+
+---
 
 ## 🧠 Project Objective
 
-Develop an end-to-end deep learning model to identify pneumonia in chest X-rays, assisting medical professionals in rapid and reliable diagnosis.
+Develop an end-to-end medical imaging pipeline capable of identifying pneumonia in chest radiographs, utilizing contrast enhancement (gamma correction and CLAHE) alongside deep convolutional architectures.
+
+---
 
 ## 📂 Repository Structure
 
-- **main.ipynb**: Full pipeline for loading data, training, evaluating, and visualizing the model.
-- **resnet_50.ipynb**: Implementation and fine-tuning of the ResNet-50 architecture.
+- `main.ipynb`: Preprocessing pipeline (grayscale conversion, gamma correction, CLAHE histogram equalization) and custom CNN training in TensorFlow/Keras.
+- `resnet_50.ipynb`: Transfer learning implementation fine-tuning an ImageNet-pretrained **ResNet-50** architecture in PyTorch.
+- `README.md`: Project documentation.
 
-## 🔢 Dataset
+---
 
-- **Total Images**: 5,21 chset X-ray images
-- **Classes**: **Pneumonia** and **Normal**
+## 🔢 Dataset & Preprocessing
 
-Dataset is split into 'train', 'val' and 'test' directories.
+- **Total Images**: 5,216 chest X-ray radiographs (`train`, `val`, and `test` splits)
+- **Classes**: `Normal` and `Pneumonia`
+- **Image Enhancements**:
+  - Look-Up Table (LUT) **Gamma Correction** ($\gamma = 0.8$)
+  - **CLAHE** (Contrast Limited Adaptive Histogram Equalization) for improved pulmonary contrast
+  - Spatial resizing and normalization via `torchvision.transforms` / `OpenCV`
 
-## 🔧 Features
-
-- 🧠 **Model**: ResNet-50 with pretrained ImageNet weights
-- 🧪 **Task**: Binary Classification - Normal vs Pneumonia
-- 🌀 **Transforms**: Resize, Normalize, Augmentations using `torchvision.transforms`
-- 💥 **Loss Function**: CrossEntropyLoss
-- 🚀 **Optimizer**: Adam or SGD with scheduler
-- 📊 **Metrics**: Accuracy, Precision, Recall, F1-score
-- 📉 **Visualizations**: Training & validation curves using Matplotlib
+---
 
 ## 🛠️ Tech Stack
 
-- Python 3
-- PyTorch
-- Torchvision
-- Matplotlib
-- NumPy
-- scikit-learn
-
-## 📎 Notes
-
-- THis project uses **transfer learning** - leveraging a ResNet-50 pretrained on ImageNet
-- Ideal for binary medical image classification tasks
-- GPU support is recommended for faster training.
+- **Python 3**
+- **PyTorch & Torchvision** (`resnet_50.ipynb`)
+- **TensorFlow & Keras** (`main.ipynb`)
+- **OpenCV (`cv2`)**, **NumPy**, **scikit-learn**, **Matplotlib**
 
 ---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/sparsh0106/X-Ray-Lung-Classifier.git
+cd X-Ray-Lung-Classifier
+pip install torch torchvision tensorflow opencv-python numpy scikit-learn matplotlib jupyter
+jupyter notebook resnet_50.ipynb
+```
+
+---
+
+## 👤 Author
+
+**Sparsh Agarwal** — [GitHub](https://github.com/sparsh0106)
